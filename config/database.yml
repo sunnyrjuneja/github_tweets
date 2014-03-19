@@ -20,7 +20,7 @@ development:
   database: github_tweets_development
   pool: 5
   username: github_tweets
-  password:
+  password: ghtweets
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -49,7 +49,7 @@ test:
   database: github_tweets_test
   pool: 5
   username: github_tweets
-  password:
+  password: ghtweets
 
 production:
   adapter: postgresql
@@ -57,4 +57,4 @@ production:
   database: github_tweets_production
   pool: 5
   username: github_tweets
-  password:
+  password: ghtweets
