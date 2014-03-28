@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'
@@ -35,6 +36,7 @@ gem 'bootstrap-sass', '3.1.1.0'
 
 gem 'omniauth', '1.2.1'
 gem 'omniauth-github', '1.1.1', git: 'git://github.com/intridea/omniauth-github.git'
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'
