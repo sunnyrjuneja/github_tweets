@@ -2,7 +2,12 @@ nav.navbar.navbar-inverse role="navigation"
   .container
     .navbar-header
       a.navbar-brand Github Tweets
-      - if signed_in?
-        Hi #{current_user.nickname}
-      - else
-        = link_to 'Sign in with Github', '/auth/github'
+    - if signed_in?
+      p.navbar-text.navbar-right 
+        'Hi #{current_user.nickname}
+        a.navbar-link href='#{sign_out_path}' title='Sign out': span.glyphicon.glyphicon-log-out
+    - else
+      p.navbar-text.navbar-right 
+        a.navbar-link href='/auth/github' title='Sign in' 
+          'Sign in with Github 
+          span.glyphicon.glyphicon-log-in
