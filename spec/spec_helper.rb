@@ -40,3 +40,59 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
+omniauth_hash = {
+  'provider' => 'github',
+  'uid' => '12345',
+  'info' => {
+    'nickname' => 'whatasunnyday',
+    'email' => 'jr.sunny@gmail.com',
+    'name' => 'Sunnynbsp;Juneja',
+    'image' => 'https://avatars.githubusercontent.com/u/12345?',
+    'urls' => {
+      'GitHub' => 'https://github.com/whatasunnyday',
+      'Blog' => 'sunnyjuneja.com'
+    }
+  },
+  'credentials' => {
+    'token' => 'abcd1234',
+    'expires' => false
+  },
+  'extra' => {
+    'raw_info' => {
+      'login' => 'whatasunnyday',
+      'id' => 12345,
+      'avatar_url' => 'https://avatars.githubusercontent.com/u/12345?',
+      'gravatar_id' => '54321',
+      'url' => 'https://api.github.com/users/whatasunnyday',
+      'html_url' => 'https://github.com/whatasunnyday',
+      'followers_url' => 'https://api.github.com/users/whatasunnyday/followers',
+      'following_url' => 'https://api.github.com/users/whatasunnyday/following{/other_user}',
+      'gists_url' => 'https://api.github.com/users/whatasunnyday/gists{/gist_id}',
+      'starred_url' => 'https://api.github.com/users/whatasunnyday/starred{/owner}{/repo}',
+      'subscriptions_url' => 'https://api.github.com/users/whatasunnyday/subscriptions',
+      'organizations_url' => 'https://api.github.com/users/whatasunnyday/orgs',
+      'repos_url' => 'https://api.github.com/users/whatasunnyday/repos',
+      'events_url' => 'https://api.github.com/users/whatasunnyday/events{/privacy}',
+      'received_events_url' => 'https://api.github.com/users/whatasunnyday/received_events',
+      'type' => 'User',
+      'site_admin' => false,
+      'name' => 'Sunny&nbsp;Juneja',
+      'company' => 'None',
+      'blog' => 'sunnyjuneja.com',
+      'location' => 'SF&nbsp;Bay&nbsp;Area',
+      'email' => 'jr.sunny@gmail.com',
+      'hireable' => false,
+      'bio' => nil,
+      'public_repos' => 37,
+      'public_gists' => 1,
+      'followers' => 5,
+      'following' => 18,
+      'created_at' => '2011-10-06T18:38:46Z',
+      'updated_at' => '2014-03-26T17:03:40Z'
+    }
+  }
+} 
+
+OmniAuth.config.test_mode = true
+OmniAuth.config.add_mock(:github, omniauth_hash)

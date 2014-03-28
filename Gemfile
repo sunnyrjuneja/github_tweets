@@ -31,6 +31,9 @@ gem 'high_voltage', '2.1.0'
 gem 'slim-rails', '2.1.2'
 gem 'bootstrap-sass', '3.1.1.0'
 
+gem 'omniauth', '1.2.1'
+gem 'omniauth-github', '1.1.1', git: 'git://github.com/intridea/omniauth-github.git'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'factory_girl_rails', '~> 4.4.1'
