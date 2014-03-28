@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :accounts, dependent: :destroy
+
   validates :provider, presence: true
   validates :uid, presence: true
   validates :nickname, presence: true

@@ -36,6 +36,7 @@ gem 'bootstrap-sass', '3.1.1.0'
 
 gem 'omniauth', '1.2.1'
 gem 'omniauth-github', '1.1.1', git: 'git://github.com/intridea/omniauth-github.git'
+gem 'omniauth-twitter', '1.0.1'
 gem 'rails_12factor', group: :production
 
 group :development, :test do

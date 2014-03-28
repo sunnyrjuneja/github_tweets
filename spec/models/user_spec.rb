@@ -41,4 +41,9 @@ describe User do
       expect(user.remember_token).not_to be_blank
     end
   end
+
+  it 'should have accounts' do
+    user = create(:user)
+    expect(user).to respond_to(:accounts) 
+  end
 end
