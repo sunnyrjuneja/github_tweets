@@ -9,4 +9,20 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-GithubTweets::Application.config.secret_key_base = '6e040f1597053ac669623aa158e11e1f0b322f90aeaa937b5ae5d250ab3cb39bfa74c321cee4342c60ed5ac8853eba1e24ca97aaa88c9d0c02eb934176e4160c'
+
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+GithubTweets::Application.config.secret_key_base = secure_token
