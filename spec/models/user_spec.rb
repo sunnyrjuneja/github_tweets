@@ -42,8 +42,15 @@ describe User do
     end
   end
 
-  it 'should have accounts' do
-    user = create(:user)
-    expect(user).to respond_to(:accounts) 
+  describe 'assocations' do
+    let(:user) { create(:user) }
+
+    it 'should have accounts' do
+      expect(user).to respond_to(:accounts) 
+    end
+
+    it 'should have repositories' do
+      expect(user).to respond_to(:repositories) 
+    end
   end
 end

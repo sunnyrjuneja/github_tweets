@@ -3,10 +3,10 @@
 FactoryGirl.define do
   factory :user do
     provider 'github'
-    uid 1
-    nickname 'defunkt'
-    email 'defunkt@github.com'
-    name 'Chris Wanstrath'
+    uid 1108341
+    nickname 'whatasunnyday'
+    email 'jr.sunny@gmail.com'
+    name 'Sunny Juneja'
     token 'abcd1234'
   end
 end
