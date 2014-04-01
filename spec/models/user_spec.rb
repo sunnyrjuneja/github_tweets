@@ -43,7 +43,7 @@ describe User do
   end
 
   describe 'assocations' do
-    let(:user) { create(:user) }
+    let(:user) { build(:user) }
 
     it 'should have accounts' do
       expect(user).to respond_to(:accounts) 
@@ -51,6 +51,12 @@ describe User do
 
     it 'should have repositories' do
       expect(user).to respond_to(:repositories) 
+    end
+  end
+
+  describe 'callbacks' do
+    it 'imports github repos' do
+      user = build(:user)
     end
   end
 end

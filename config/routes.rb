@@ -1,6 +1,7 @@
 GithubTweets::Application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create'
   get 'signout' => 'sessions#destroy', as: 'sign_out'
+  resources :repositories, only: [:index, :show, :update]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,8 +1,10 @@
 require 'spec_helper'
 
 describe SessionsController do
+  include AuthenticationHelper
+
   before do
-    request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:github]
+    set_omniauth_callback
   end
 
   describe '#create' do
@@ -20,7 +22,7 @@ describe SessionsController do
 
     it 'should redirect the user to the root url' do
       post :create, provider: :github
-      expect(response).to redirect_to root_url
+      expect(response).to redirect_to repositories_path
     end
   end
 

@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     user = User.find_by(provider: auth['provider'], uid: auth['uid']) || 
       User.create_with_omniauth(auth)
     sign_in user
-    redirect_to root_url
+    redirect_to repositories_path
   end
 
   def destroy
