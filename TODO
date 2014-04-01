@@ -1,0 +1,11 @@
+Add will_paginate
+
+repositories#index
+  Filter forks 
+  Sort by date, stars
+
+User
+  make uid unique
+
+404 Page
+Missing Repo Page (currently redirects)
