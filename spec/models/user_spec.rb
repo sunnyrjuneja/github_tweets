@@ -17,10 +17,6 @@ describe User do
     expect(build(:user, nickname: nil)).to have(1).errors_on(:nickname)
   end
 
-  it 'is not valid without a name' do
-    expect(build(:user, name: nil)).to have(1).errors_on(:name)
-  end
-
   it 'is not valid without a email' do
     expect(build(:user, email: nil)).to have(1).errors_on(:email)
   end
