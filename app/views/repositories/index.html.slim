@@ -1,4 +1,4 @@
 h1 Repositories
 ul
   - @repos.each do |repo|
-    li #{repo.name}
+    li = link_to repo.name, repo
