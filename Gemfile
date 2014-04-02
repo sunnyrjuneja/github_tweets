@@ -12,6 +12,7 @@ gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'
 
 gem 'puma', '2.8.0'
+gem 'sucker_punch', '1.0.3'
 
 gem 'faraday', '0.9.0'
 
@@ -32,6 +33,7 @@ end
 
 group :test do
   gem 'webmock', '1.17.4'
+  gem 'database_cleaner', '1.2.0'
 end
 
 group :doc do
