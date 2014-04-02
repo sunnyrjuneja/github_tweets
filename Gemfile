@@ -32,6 +32,7 @@ end
 
 group :test do
   gem 'webmock', '1.17.4'
+  gem 'codeclimate-test-reporter', '0.3.0', require: nil
 end
 
 group :doc do
