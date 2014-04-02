@@ -10,7 +10,7 @@ module AuthenticationHelper
     cookies[:remember_token] = token
   end
 
-  def logout(user)
+  def logout
     cookies[:remember_token] = nil
   end
 end
