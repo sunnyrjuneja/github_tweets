@@ -4,8 +4,7 @@ repositories#index
   Filter forks 
   Sort by date, stars
 
-User
-  make uid unique
+make gh_ids unique
 
 404 Page
 Missing Repo Page (currently redirects)

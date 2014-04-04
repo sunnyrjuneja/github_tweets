@@ -20,4 +20,12 @@ describe Repository do
   it 'is not valid without a fork' do
     expect(build(:repository, fork: nil)).to have(1).errors_on(:fork)
   end
+
+  describe 'assocations' do
+    let(:repo) { build(:repository) }
+
+    it 'should have a webhook' do
+      expect(repo).to respond_to(:webhook)
+    end
+  end
 end
