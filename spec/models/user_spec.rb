@@ -25,18 +25,6 @@ describe User do
     expect(build(:user, token: nil)).to have(1).errors_on(:token)
   end
 
-  describe 'remember_token' do
-    let(:user) { build(:user) }
-
-    it 'should be blank' do
-      expect(user.remember_token).to be_blank
-    end
-
-    it 'should create after save' do
-      user.save
-      expect(user.remember_token).not_to be_blank
-    end
-  end
 
   describe 'assocations' do
     let(:user) { build(:user) }
@@ -51,8 +39,28 @@ describe User do
   end
 
   describe 'callbacks' do
-    it 'imports github repos' do
-      user = build(:user)
+    let(:user) { build(:user) }
+
+    before do
+      stub_github_api("/users/#{user.nickname}/repos").
+        to_return(status: 200, body: mock_response('github_repos.json'))
+    end
+
+    context 'import github repos' do
+      it 'after creating' do
+        expect { user.save }.to change(Repository, :count).by(2)
+      end
+    end
+
+    context 'remember_token' do
+      it 'should be blank' do
+        expect(user.remember_token).to be_blank
+      end
+
+      it 'should create after save' do
+        user.save
+        expect(user.remember_token).not_to be_blank
+      end
     end
   end
 end
