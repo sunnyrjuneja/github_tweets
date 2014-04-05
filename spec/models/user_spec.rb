@@ -43,17 +43,6 @@ describe User do
   describe 'callbacks' do
     let(:user) { build(:user) }
 
-    before do
-      stub_get_api(repo_list(user)).
-        to_return(status: 200, body: mock_response('github_repos.json'))
-    end
-
-    context 'import github repos' do
-      it 'after creating' do
-        expect { user.save }.to change(Repository, :count).by(2)
-      end
-    end
-
     context 'remember_token' do
       it 'should be blank' do
         expect(user.remember_token).to be_blank

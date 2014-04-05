@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe RepoSyncWorker, worker: true do
+describe RepositorySyncerWorker, worker: true do
   include GithubApi
 
   describe '#perform' do
     let!(:user) { create(:user) }
-    let(:worker) { RepoSyncWorker.new }
+    let(:worker) { RepositorySyncerWorker.new }
     
     before do
       stub_get_api(repo_list(user)).
@@ -13,7 +13,7 @@ describe RepoSyncWorker, worker: true do
     end
 
     it 'syncs repos with Github' do
-      RepoSyncWorker.new.async.perform(user.id)
+      worker.async.perform(user.id)
       expect(get_api repo_list user).to have_been_made
     end
   end

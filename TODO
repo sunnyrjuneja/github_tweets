@@ -8,3 +8,7 @@ make gh_ids unique
 
 404 Page
 Missing Repo Page (currently redirects)
+
+check if oauth is still valid and force login if necessary
+
+speed up tests by removing dependencies by double/mock

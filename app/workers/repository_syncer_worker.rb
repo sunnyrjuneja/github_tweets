@@ -1,4 +1,4 @@
-class RepoSyncWorker
+class RepositorySyncerWorker
   include SuckerPunch::Job
 
   def perform(user_id)
