@@ -76,14 +76,6 @@ def mock_response(file)
   File.open(mock_path + '/' + file)
 end
 
-def stub_github_api(path)
-  stub_request(:get, 'https://api.github.com' + path)
-end
-
-def request_github_api(path)
-  a_request(:get, 'https://api.github.com' + path)
-end
-
 omniauth = JSON.parse(mock_response('omniauth.json').read)
 
 OmniAuth.config.test_mode = true

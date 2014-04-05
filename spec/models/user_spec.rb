@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe User do
+  include GithubApi
+
   it 'is valid with a provider, uid, nickname, email, name, token, and remember_token' do
     expect(build(:user)).to be_valid
   end
@@ -42,7 +44,7 @@ describe User do
     let(:user) { build(:user) }
 
     before do
-      stub_github_api("/users/#{user.nickname}/repos").
+      stub_get_api(repo_list(user)).
         to_return(status: 200, body: mock_response('github_repos.json'))
     end
 
