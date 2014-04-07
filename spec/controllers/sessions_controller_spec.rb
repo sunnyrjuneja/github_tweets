@@ -1,10 +1,13 @@
 require 'spec_helper'
 
-describe SessionsController do
+describe SessionsController, worker: true do
   include AuthenticationHelper
+  include GithubApi
 
   before do
     set_omniauth_callback
+    stub_get_api(repo_list(create(:user))).
+      to_return(status: 200, body: mock_response('github_repos.json'))
   end
 
   describe '#create' do
@@ -23,6 +26,13 @@ describe SessionsController do
     it 'should redirect the user to the root url' do
       post :create, provider: :github
       expect(response).to redirect_to repositories_path
+    end
+
+    it 'create a job to sync repos with github' do
+      job = double("job")
+      RepositorySyncerWorker.stub_chain(:new, :async).and_return(job)
+      expect(job).to receive(:perform)
+      post :create, provider: :github
     end
   end
 

@@ -26,7 +26,7 @@ gem 'omniauth-twitter', '1.0.1'
 gem 'rails_12factor', group: :production
 
 group :development, :test do
-  gem 'rspec-rails', '2.13.1'
+  gem 'rspec-rails', '2.14.2'
   gem 'factory_girl_rails', '4.4.1'
   gem 'guard-rspec', '2.5.0'
 end

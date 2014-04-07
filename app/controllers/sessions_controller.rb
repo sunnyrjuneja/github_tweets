@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
     auth = request.env['omniauth.auth']
     user = User.find_by(provider: auth['provider'], uid: auth['uid']) || 
       User.create_with_omniauth(auth)
+    RepositorySyncerWorker.new.async.perform(user.id)
     sign_in user
     redirect_to repositories_path
   end
