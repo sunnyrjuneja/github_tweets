@@ -13,7 +13,16 @@ describe Webhook do
     expect(build(:webhook, repository: nil)).to have(1).errors_on(:repository)
   end
 
-  it 'is not valid without a gh_id' do
-    expect(build(:webhook, gh_id: nil)).to have(1).errors_on(:gh_id)
+  describe '.active?' do
+    let(:wh) { create(:webhook) }
+
+    it 'should be active if it has a gh_id' do
+      expect(wh.active?).to be_true
+    end
+
+    it 'should not be active if it does not have a gh_id' do
+      wh.gh_id = nil
+      expect(wh.active?).to be_false
+    end
   end
 end

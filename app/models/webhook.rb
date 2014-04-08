@@ -5,4 +5,8 @@ class Webhook < ActiveRecord::Base
   validates :user, presence: true
   validates :repository, presence: true
   validates :gh_id, presence: true
+
+  def active?
+    gh_id
+  end
 end

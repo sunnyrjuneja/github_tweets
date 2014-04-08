@@ -29,7 +29,7 @@ describe SessionsController, worker: true do
     end
 
     it 'create a job to sync repos with github' do
-      job = double("job")
+      job = double('job')
       RepositorySyncerWorker.stub_chain(:new, :async).and_return(job)
       expect(job).to receive(:perform)
       post :create, provider: :github

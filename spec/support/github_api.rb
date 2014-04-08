@@ -7,6 +7,10 @@ module GithubApi
     stub_request(:post, 'https://api.github.com' + path)
   end
 
+  def stub_delete_api(path)
+    stub_request(:delete, 'https://api.github.com' + path)
+  end
+
   def get_api(path)
     a_request(:get, 'https://api.github.com' + path)
   end
@@ -15,12 +19,20 @@ module GithubApi
     a_request(:post, 'https://api.github.com' + path)
   end
 
+  def delete_api(path)
+    a_request(:delete, 'https://api.github.com' + path)
+  end
+
   def repo_list(user)
     "/users/#{user.nickname}/repos"
   end
 
-  def webhook(repo)
+  def create_webhook(repo)
     "/repos/#{repo.user.nickname}/#{repo.name}/hooks?access_token=#{repo.user.token}"
+  end
+
+  def delete_webhook(repo, webhook)
+    "/repos/#{repo.user.nickname}/#{repo.name}/hooks/#{webhook.gh_id}?access_token=#{repo.user.token}"
   end
 
   def payload(user)

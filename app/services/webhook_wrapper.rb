@@ -7,16 +7,43 @@ class WebhookWrapper
   end
 
   def create
-    response = Faraday.post(webhooks_url, payload)
-    json = JSON.parse(response.body)
-    Webhook.create(gh_id: json['id'], user: @user, repository: @repo)
-    response
+    unless webhook.active?
+      gh_id = create_gh_webhook  
+      webhook.gh_id = gh_id
+      webhook.save
+    end
+  end
+
+  def delete
+    if webhook.active?
+      delete_gh_webhook
+      webhook.gh_id = nil
+      webhook.save
+    end
+  end
+
+  def webhook
+    @repo.webhook || @repo.build_webhook(user: @user)
   end
 
   private
 
-    def webhooks_url
+    def create_gh_webhook
+      response = Faraday.post(create_webhook_url, payload)
+      json = JSON.parse(response.body)
+      json['id']
+    end
+
+    def delete_gh_webhook
+      Faraday.delete(delete_webhook_url)
+    end
+
+    def create_webhook_url
       "https://api.github.com/repos/#{@user.nickname}/#{@repo.name}/hooks?access_token=#{@user.token}"
+    end
+
+    def delete_webhook_url
+      "https://api.github.com/repos/#{@user.nickname}/#{@repo.name}/hooks/#{webhook.gh_id}?access_token=#{@user.token}"
     end
 
     def payload
