@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe User do
-  include GithubApi
 
   it 'is valid with a provider, uid, nickname, email, name, token, and remember_token' do
     expect(build(:user)).to be_valid

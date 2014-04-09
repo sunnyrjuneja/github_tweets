@@ -12,3 +12,9 @@ Missing Repo Page (currently redirects)
 check if oauth is still valid and force login if necessary
 
 speed up tests by removing dependencies by double/mock
+
+update to rails 4.1
+
+refactor tests for webhookwrapper service a bit
+test when webhook is not active but user wants to reenable
+refactor githubapi module a bit

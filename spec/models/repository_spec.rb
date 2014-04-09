@@ -27,5 +27,9 @@ describe Repository do
     it 'should have a webhook' do
       expect(repo).to respond_to(:webhook)
     end
+
+    it 'should have events' do
+      expect(repo).to respond_to(:events)
+    end
   end
 end
