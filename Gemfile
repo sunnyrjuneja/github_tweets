@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
-gem 'rails', '4.0.4'
+gem 'rails', '4.1.0'
 gem 'pg'
 
 gem 'sass-rails', '4.0.2'
@@ -17,7 +17,7 @@ gem 'sucker_punch', '1.0.3'
 gem 'faraday', '0.9.0'
 
 gem 'high_voltage', '2.1.0'
-gem 'slim-rails', '2.0.4'
+gem 'slim-rails', '2.1.4'
 gem 'bootstrap-sass', '3.1.1.0'
 
 gem 'omniauth', '1.2.1'

@@ -31,8 +31,8 @@ module GithubApi
     "/repos/#{repo.user.nickname}/#{repo.name}/hooks?access_token=#{repo.user.token}"
   end
 
-  def delete_webhook(repo, webhook)
-    "/repos/#{repo.user.nickname}/#{repo.name}/hooks/#{webhook.gh_id}?access_token=#{repo.user.token}"
+  def delete_webhook(repo, gh_id)
+    "/repos/#{repo.user.nickname}/#{repo.name}/hooks/#{gh_id}?access_token=#{repo.user.token}"
   end
 
   def payload(user)

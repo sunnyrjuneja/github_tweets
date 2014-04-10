@@ -36,17 +36,19 @@ describe WebhookWrapper do
     let(:wrapper) { WebhookWrapper.new(webhook.repository) }
 
     before do
-      stub_delete_api(delete_webhook(webhook.repository, webhook))
+      stub_delete_api(delete_webhook(webhook.repository, webhook.gh_id))
     end
 
     it 'should post the correct url' do
+      gh_id = webhook.gh_id
       wrapper.delete
-      expect(delete_api(delete_webhook(webhook.repository, webhook))).to have_been_made
+      expect(delete_api(delete_webhook(webhook.repository, gh_id))).to have_been_made
     end
 
     it 'unless the webhook is not active' do
+      gh_id = webhook.gh_id
       webhook.gh_id = nil
-      expect(delete_api(delete_webhook(webhook.repository, webhook))).not_to have_been_made
+      expect(delete_api(delete_webhook(webhook.repository, gh_id))).not_to have_been_made
     end
 
     it 'should not remove a webhook' do
