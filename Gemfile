@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.1.1'
 
 gem 'rails', '4.1.0'
 gem 'pg'
+gem 'spring', '1.1.2', group: :development
 
 gem 'sass-rails', '4.0.2'
 gem 'uglifier', '2.1.1'
@@ -29,6 +30,7 @@ group :development, :test do
   gem 'rspec-rails', '2.14.2'
   gem 'factory_girl_rails', '4.4.1'
   gem 'guard-rspec', '2.5.0'
+  gem 'spring-commands-rspec', '1.0.1'
 end
 
 group :test do
